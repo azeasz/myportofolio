@@ -544,13 +544,13 @@ body.dark .description-btn:hover {
   }
 }
 
-.cert-container {
+.certificates-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.cert-item {
+.certificate-item {
   margin: 10px;
   border: 1px solid #ddd;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -587,7 +587,7 @@ body.dark .cert-description {
   opacity: 45%;
 }
 
-.cert-item.active .cert-description {
+.certificate-item.active .cert-description {
   transform: translateY(0%);
   animation: fallIn 0.5s ease forwards;
 }
