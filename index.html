@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circular Menu with Icons</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="light">
+  <div class="theme-switcher">
+    <button class="theme-button"><i class="fas fa-sun"></i></button>
+  </div>
+  <nav class="circular-menu">
+    <div class="menu-button"><i class="fas fa-bars"></i></div>
+    <ul class="menu-options hidden">
+      <li><a href="#home" id="home-link" data-title="Feedback"><i class="fas fa-comments"></i></a></li>
+      <li><a href="#about" id="about-link" data-title="AboutMe"><i class="fas fa-user"></i></a></li>
+      <li><a href="#services" id="services-link" data-title="Services"><i class="fas fa-briefcase"></i></a></li>
+      <li><a href="#contact" id="contact-link" data-title="Contact"><i class="fas fa-envelope"></i></a></li>
+      <li><a href="#project" id="project-link" data-title="Projects"><i class="fas fa-project-diagram"></i></a></li>
+      <li><a href="#achievement" id="achievement-link" data-title="Achievement"><i class="fas fa-trophy"></i></a></li>
+      <li><a href="#info" id="info-link" data-title="WebInfo"><i class="fas fa-info-circle"></i></a></li>
+    </ul>
+  </nav>
+
+  <!-- Popup Sambutan -->
+  <div class="popup" id="popup-modal">
+    <div class="popup-content">
+      <h2>Selamat Datang!</h2>
+      <p>Terima kasih telah mengunjungi portofolio saya.</p>
+      <button class="close-popup" onclick="closePopup()">Continue</button>
+    </div>
+  </div>
+  
+  <div class="background-animation">
+    <img src="bc.gif" alt="Background Animation">
+  </div>
+
+  <!-- Modal Home -->
+  <div class="modal" id="home-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Feedback</h2>
+      <div id="feedback-list">
+        <!-- Feedbacks will be displayed here -->
+      </div>
+      <form id="feedback-form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="feedback">Feedback:</label><br>
+        <textarea id="feedback" name="feedback" rows="4" cols="35" required></textarea><br>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal About -->
+  <div class="modal" id="about-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>About Me</h2>
+      <img src="background.jpg" alt="profile picture" class="profile-picture">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam odio. Vestibulum sodales eros a nisi tempor, et fermentum tortor lacinia.</p>
+    </div>
+  </div>
+
+  <!-- Modal Contact -->
+  <div class="modal" id="contact-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contact Me</h2>
+      <div class="social-icons">
+        <a href="https://wa.me/1234567890" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/username/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/username/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/username" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Services -->
+  <div class="modal" id="services-modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Our Services</h2>
+      <p>We specialize in custom cake making for all occasions. Contact us for your next celebration!</p>
+    </div>
+  </div>
+
+     <!-- Modal Projects -->
+<div class="modal" id="project-modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Our Projects</h2>
+    <div class="project-list">
+        <div class="image-slider">
+          <div class="slides">
+            <div class="mySlides">
+              <a href="project-image-1.jpg">
+              <img src="project-image-1.jpg" alt="Project Image 1" style="width:100%" data-slide-number="1">
+              </a>
+              <div class="caption">♦</div>
+              <div class="description">
+              </div>
+            </div>
+            <div class="mySlides">
+              <a href="project-image-2.jpg">
+              <img src="project-image-2.jpg" alt="Project Image 2" style="width:100%" data-slide-number="2">
+            </a>
+              <div class="caption">♦</div>
+              <div class="description">
+              </div>
+            </div>
+            <div class="mySlides">
+              <a href="project-image-3.jpg">
+              <img src="project-image-3.jpg" alt="Project Image 3" style="width:100%" data-slide-number="3">
+              </a>
+              <div class="caption">♦</div>
+              <div class="description">
+              </div>
+            </div>
+          </div>
+          <a class="prev">&#10094;</a>
+          <a class="next">&#10095;</a>
+        </div>
+        <button class="description-btn"><i class="fas fa-chevron-down"></i></button>
+        <div class="project-description">
+          <p>Project description will appear here jdjdndnsndndsixjdnndndndn</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal Achievement -->
+<div id="achievement-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="certificates-container">
+      <div class="certificate-item">
+        <img src="certificate1.jpg" alt="Certificate 1" class="cert-image">
+        <div class="cert-description">
+          <p>Detail mengenai Sertifikat 1...</p>
+        </div>
+      </div>
+      <div class="certificate-item">
+        <img src="certificate2.jpg" alt="Certificate 2" class="cert-image">
+        <div class="cert-description">
+          <p>Detail mengenai Sertifikat 2...</p>
+        </div>
+      </div>
+      <!-- Tambahkan item sertifikat lebih banyak sesuai kebutuhan -->
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal Information Website -->
+<div class="modal" id="info-modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Website Information</h2>
+    <p>This website was designed to showcase interactive web design techniques including:</p>
+    <ul>
+      <li>Responsive Web Design</li>
+      <li>Interactive Menus</li>
+      <li>Modal Windows</li>
+      <li>Feedback Systems</li>
+    </ul>
+  </div>
+</div>
+  <!-- Lightbox container -->
+<div id="lightbox-modal" class="lightbox" style="display:none;">
+  <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+  <img class="lightbox-content" src="" alt="Expanded Image">
+</div>
+
+  
+ <script src="script.js"></script>
+</body>
+</html>
