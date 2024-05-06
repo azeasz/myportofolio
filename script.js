@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
 // Tampilkan popup ketika halaman dimuat
 window.onload = function() {
   document.getElementById('popup-modal').style.display = 'block';
+    document.querySelector('.menu-button').classList.add('disabled');
 }
-    
 // Fungsi untuk menutup popup
 window.closePopup = function() {
     document.getElementById('popup-modal').style.display = 'none';
-}
-    
+    document.querySelector('.menu-button').classList.remove('disabled');
+}  
   links.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault(); // Mencegah tindakan default

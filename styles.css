@@ -78,7 +78,7 @@ body.dark .theme-button:hover {
 }
 
 .menu-button {
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -658,3 +658,7 @@ body.dark .close-popup:hover {
   background-color: inherit; /* Warna akan berubah saat di-hover */
 }
 
+.disabled {
+  pointer-events: none; /* Mencegah elemen menerima event pointer */
+  opacity: 0.5; /* Opsional: Mengurangi opasitas untuk indikasi visual bahwa tombol nonaktif */
+}
