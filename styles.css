@@ -1,664 +1,700 @@
 /* CSS Custom Properties */
 :root {
-  --light-bg: #F5F5F5;
-  --dark-bg: #0C090A;
-  --light-text: #151B54;
-  --dark-text: #F5F5F5;
-  --menu-hover-bg: #F0F8FF; /* Warna hover normal */
-  --dark-menu-hover-bg: #151B54; /* Warna hover untuk dark mode */
-}
-
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.light {
-  background-color: var(--light-bg);
-  color: var(--light-text);
-}
-
-.dark {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
-}
-
-.theme-switcher {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-
-.theme-button {
-  padding: 10px;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  color: inherit;
-  font-size: 16px;
-  display: flex;
-  align-items: center;
-  opacity: 85%;
-}
-
-body.dark .theme-button {
-  background-color: background-color: rgba(12, 9, 10, 0.2);
-}
-
-.theme-button:hover {
-  background: radial-gradient(circle, white 0%, navy 80%); /* Gradient putih transparan */
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-body.dark .theme-button:hover {
-  background: radial-gradient(circle, var(--dark-bg) 0%, white 80%); /* Gradient putih transparan */
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
-}
-
-.theme-button i {
-  margin-right: 0px;
-  transition: transform 0.5s ease, box-shadow 0.3s ease;
-}
-
-.circular-menu {
-  position: relative;
-  width: 200px;
-  height: 200px;
-}
-
-.menu-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
-  background-color: inherit;
-  color: inherit;
-  text-align: center;
-  line-height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 1;
-  border: 2px solid;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.menu-button:hover {
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
-  cursor: pointer; /* Mengubah cursor menjadi pointer untuk indikasi clickable */
-}
-
-.menu-button i {
-  transition: transform 0.5s ease, box-shadow 0.3s ease; /* Menambahkan transisi untuk box-shadow */
-}
-
-.menu-button.rotate i {
-  transform: rotate(90deg);
-}
-
-.menu-options {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: transform 0.5s, opacity 0.5s;
-  background-color: inherit;
-}
-
-.menu-options:not(.hidden) {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
-
-.menu-options li {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
-  background-color: inherit;
-  border-radius: 50%;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0);
-  transition: transform 0.3s, color 0.3s, background 0.5s ease, box-shadow 0.5s ease;
-}
-
-.menu-options li a {
-  text-decoration: none;
-  color: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.menu-options li a:hover {
-  background-color: inherit;
-}
-
-.menu-options li a:hover::after {
-  content: attr(data-title);
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: inherit;
-  color: inherit;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-dark.body .menu-options li a:hover::after{
-  background-color: inherit;
-}
-
-.menu-options li i {
-  font-size: 20px;
-  transition: transform 0.3s ease;
-  background-color: inherit;
-}
-
-.menu-button i {
-  font-size: 24px;
-  line-height: 60px;
-}
-
-.menu-options li:hover {
-  background: radial-gradient(circle, white 0%, navy 80%); /* Gradient putih transparan */
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
-}
-
-.menu-options li:hover i {
-  background-color: inherit;
-  transform: scale(1.2); /* Membesarkan ikon saat di-hover */
-}
-
-body.dark .menu-options li:hover {
-  background: radial-gradient(circle, var(--dark-bg) 0%, white 80%); /* Gradient putih transparan */
-  box-shadow: 0 0 8px rgba(12, 9, 10, 0.8); /* Cahaya putih */
-}
-
-body.dark .menu-options li:hover i {
-  background-color: inherit;
-}
-
-.menu-options li:nth-child(1) { transform: rotate(45deg) translateY(-100px) rotate(-45deg); }
-.menu-options li:nth-child(2) { transform: rotate(90deg) translateY(-100px) rotate(-90deg); }
-.menu-options li:nth-child(3) { transform: rotate(135deg) translateY(-100px) rotate(-135deg); }
-.menu-options li:nth-child(4) { transform: rotate(180deg) translateY(-100px) rotate(-180deg); }
-.menu-options li:nth-child(5) { transform: rotate(225deg) translateY(-100px) rotate(-225deg); }
-.menu-options li:nth-child(6) { transform: rotate(270deg) translateY(-100px) rotate(-270deg); }
-.menu-options li:nth-child(7) { transform: rotate(315deg) translateY(-100px) rotate(-315deg); }
-
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-  background-color: var(--light-bg);
-  opacity: 90%;
-  margin: 20% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  border-radius: 5px;
-}
-
-/* Tambahkan aturan CSS untuk dark mode */
-body.dark .modal-content {
-  background-color: var(--dark-bg); /* Ganti warna background modal pada dark mode */
-  color: inherit; /* Ganti warna teks modal pada dark mode */
-}
-
-body.dark .close {
-  color: inherit; /* Ganti warna ikon close pada dark mode */
-}
-.close {
-  color: inherit;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Modal Contact */
-#contact-modal .social-icons {
-  display: flex;
-  justify-content: center;
-}
-
-#contact-modal .social-icons a {
-  display: inline-block;
-  margin: 0 10px;
-  color: inherit;
-  font-size: 24px;
-}
-
-#contact-modal .social-icons a:hover {
-  color: var(--dark-text);
-}
-
-/* Modal Feedback Form */
-#home-modal #feedback-form {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-/* Background Animation */
-
-.background-animation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
-
-.background-animation img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: backgroundAnimation 60s linear infinite;
-  opacity: 0;
-}
-
-@keyframes backgroundAnimation {
-  0% {
-    opacity: 0;
-    transform: scale(1.2) translateY(-10%);
+    --light-bg: #F5F5F5;
+    --dark-bg: #0C090A;
+    --light-text: #151B54;
+    --dark-text: #F5F5F5;
+    --menu-hover-bg: #F0F8FF; /* Warna hover normal */
+    --dark-menu-hover-bg: #151B54; /* Warna hover untuk dark mode */
   }
-  10% {
-    opacity: 1;
-    transform: scale(1) translateY(0%);
-  }
-  90% {
-    opacity: 1;
-    transform: scale(1) translateY(0%);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.2) translateY(10%);
-  }
-}
-
-/* Notification */
-
-.notification {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  z-index: 1000;
-  transition: opacity 0.5s ease;
-}
-
-.profile-picture {
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  border-radius: 50%;
-  margin-bottom: 20px;
   
-}
-
-/* Style untuk lightbox dan modal */
-#project-modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden; /* Enable scroll if needed */
-}
-
-#project-modal.light .modal-content {
-  background-color: inherit;
-  color: inherit;
-}
-
-#project-modal.dark .modal-content {
-  background-color: var(--dark-bg);
-  color: inherit;
-}
-
-#project-modal.light .close {
-  color: #333;
-}
-
-#project-modal.dark .close {
-  color: #ddd;
-}
-
-/* Container untuk slides */
-.image-slider {
-  position: relative;
-  max-width: 1000px; /* Maximum width */
-  margin: auto;
-  background-color: inherit;
-}
-
-/* Mengatur gambar pada slider */
-.image-slider .mySlides {
-  display: none; /* Hidden by default */
-  width: 100%; /* Responsive width */
-  height: auto; /* Adjust height */
-}
-
-/* Caption text */
-.image-slider .caption {
-  color: inherit;
-  font-size: 1px;
-  position: absolute;
-  bottom: -20px;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-}
-
-/* Navigasi slide sebelumnya dan berikutnya */
-.image-slider .prev, .image-slider .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none; /* Disable text selection */
-}
-
-.image-slider .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.image-slider .prev {
-  left: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* Hover effects for the buttons */
-.image-slider .prev:hover, .image-slider .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Gambar yang aktif */
-.image-slider .mySlides.active {
-  display: block;
-}
-
-/* Style untuk gambar yang di klik/diperbesar */
-.image-slider img.active {
-  cursor: pointer;
-  transition: transform 0.25s ease;
-}
-
-.image-slider img.active:hover {
-  transform: scale(1.1); /* Zoom efek saat di-hover */
-}
-
-.lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.8);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.close-lightbox {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: #fff;
-  cursor: pointer;
-}
-
-.lightbox-content {
-  max-width: 110%;
-  max-height: 110%;
-  margin: auto;
-  display: block;
-}
-
-/* Modal Projects */
-.project-description {
-  display: none;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
-}
-
-.project-list {
-  position: relative;
-}
-
-.description-btn {
-  position: absolute;
-  top: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px; /* Ukuran lingkaran */
-  height: 40px; /* Ukuran lingkaran */
-  line-height: 40px; /* Vertikal align icon */
-  text-align: center; /* Horisontal align icon */
-  background-color: var(--menu-hover-bg);
-  border: none;
-  color: var(--light-text);
-  padding: 0;
-  border-radius: 50%; /* Membuatnya berbentuk lingkaran */
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.description-btn:hover {
-  background-color: var(--menu-hover-bg-darker);
-  transform: translateX(-50%) scale(1.1); /* Membuatnya lebih besar saat di-hover */
-}
-
-.description-btn i {
-  pointer-events: none; /* Mencegah ikon menerima event klik */
-}
-
-.project-list.active .project-description {
-  display: block;
-  max-height: 2000px; /* Set the max height */
-}
-
-.project-list.active .description-btn {
-  transform: translateX(-50%) translateY(-90%);
-}
-
-body.dark .description-btn {
-  background-color: var(--dark-bg);
-  color: inherit;
-}
-
-body.dark .description-btn:hover {
-  background-color: var(--dark-bg);
-}
-@keyframes fallIn {
-  from {
-    transform: translateY(-50%);
-    opacity: 0;
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
   }
-  to {
-    transform: translateY(0);
+  
+  .light {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+  }
+  
+  .dark {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+  }
+  
+  .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100px;
+      position: fixed; 
+      top: 5vh;
+      left: 0;
+      background-color: transparent;
+      z-index: 1;
+  }
+  
+  h1 {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 400;
+      color: navy;
+      margin: 0;
+  }
+  
+  body.dark h1 {
+      color: var(--dark-text);
+  }
+  
+  .theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+  }
+  
+  .theme-button {
+    padding: 10px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: inherit;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    opacity: 85%;
+  }
+  
+  body.dark .theme-button {
+    background-color: rgba(12, 9, 10, 0.2);
+  }
+  
+  .theme-button:hover {
+    background: radial-gradient(circle, white 0%, navy 80%); /* Gradient putih transparan */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  body.dark .theme-button:hover {
+    background: radial-gradient(circle, var(--dark-bg) 0%, white 80%); /* Gradient putih transparan */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
+  }
+  
+  .theme-button i {
+    margin-right: 0px;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+  }
+  
+  .circular-menu {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .menu-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background-color: inherit;
+    color: inherit;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    border: 2px solid;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .menu-button:hover {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
+    cursor: pointer; /* Mengubah cursor menjadi pointer untuk indikasi clickable */
+  }
+  
+  .menu-button i {
+    transition: transform 0.5s ease, box-shadow 0.3s ease; /* Menambahkan transisi untuk box-shadow */
+  }
+  
+  .menu-button.rotate i {
+    transform: rotate(90deg);
+  }
+  
+  .menu-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: transform 0.5s, opacity 0.5s;
+    background-color: inherit;
+  }
+  
+  .menu-options:not(.hidden) {
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
-}
-
-.certificates-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.certificate-item {
-  margin: 10px;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  overflow: hidden;
-  position: relative;
-}
-
-.cert-image {
-  width: 100%;
-  height: auto;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.cert-image:hover {
-  transform: scale(1.05);
-}
-
-.cert-description {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  background-color: lightgrey;
-  opacity: 70%;
-  transform: translateY(100%);
-  transition: transform 0.5s ease;
-}
-
-body.dark .cert-description {
-  background-color: var(--dark-bg);
-  opacity: 45%;
-}
-
-.certificate-item.active .cert-description {
-  transform: translateY(0%);
-  animation: fallIn 0.5s ease forwards;
-}
-
-.popup {
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: inherit;
-  padding: 20px;
-  border-top: 1px solid #ccc;
-  opacity: 90%;
-}
-
-.popup-content {
-  text-align: center;
-}
-
-.close-popup {
-  display: inline-block;
-  position: relative;
-  padding: 8px 16px;
-  cursor: pointer;
-  overflow: hidden;
-  z-index: 1;
-  background-color: navy;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  transition: background-color 0.3s ease; /* Animasi transisi untuk background color */
-}
-
-.close-popup:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 200%; /* Lebar gradient dua kali lipat dari tombol */
-  height: 100%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 80%); /* Gradient putih transparan */
-  transition: left 0.3s ease; /* Animasi untuk perubahan posisi gradient saat hover */
-  border-radius: 50%; /* Untuk membuat gradient berbentuk bulat */
-  z-index: -1; /* Mengatur z-index agar gradient berada di bawah tombol */
-}
-
-.close-popup:hover:before {
-  left: -50%; /* Menggeser gradient ke kiri agar hanya setengah badan tombol yang bercahaya */
-}
-
-.close-popup:hover {
-  background-color: darkgray; /* Warna akan berubah saat di-hover */
-  color: navy;
-}
-
-body.dark .popup {
-  background-color: inherit;
-}
-
-body.dark .close-popup{
-  background-color: navy;
-  color: var(--dark-text);
-}
-
-body.dark .close-popup:hover {
-  background-color: inherit; /* Warna akan berubah saat di-hover */
-}
-
-.disabled {
-  pointer-events: none; /* Mencegah elemen menerima event pointer */
-  opacity: 0.5; /* Opsional: Mengurangi opasitas untuk indikasi visual bahwa tombol nonaktif */
-}
+  
+  .menu-options li {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: inherit;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0);
+    transition: transform 0.3s, color 0.3s, background 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .menu-options li a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .menu-options li a:hover {
+    background-color: inherit;
+  }
+  
+  .menu-options li a:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: inherit;
+    color: inherit;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  dark.body .menu-options li a:hover::after{
+    background-color: inherit;
+  }
+  
+  .menu-options li i {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+    background-color: inherit;
+  }
+  
+  .menu-button i {
+    font-size: 24px;
+    line-height: 60px;
+  }
+  
+  .menu-options li:hover {
+    background: radial-gradient(circle, white 0%, navy 80%); /* Gradient putih transparan */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* Cahaya putih */
+  }
+  
+  .menu-options li:hover i {
+    background-color: inherit;
+    transform: scale(1.2); /* Membesarkan ikon saat di-hover */
+  }
+  
+  body.dark .menu-options li:hover {
+    background: radial-gradient(circle, var(--dark-bg) 0%, white 80%); /* Gradient putih transparan */
+    box-shadow: 0 0 8px rgba(12, 9, 10, 0.8); /* Cahaya putih */
+  }
+  
+  body.dark .menu-options li:hover i {
+    background-color: inherit;
+  }
+  
+  .menu-options li:nth-child(1) { transform: rotate(45deg) translateY(-100px) rotate(-45deg); }
+  .menu-options li:nth-child(2) { transform: rotate(90deg) translateY(-100px) rotate(-90deg); }
+  .menu-options li:nth-child(3) { transform: rotate(135deg) translateY(-100px) rotate(-135deg); }
+  .menu-options li:nth-child(4) { transform: rotate(180deg) translateY(-100px) rotate(-180deg); }
+  .menu-options li:nth-child(5) { transform: rotate(225deg) translateY(-100px) rotate(-225deg); }
+  .menu-options li:nth-child(6) { transform: rotate(270deg) translateY(-100px) rotate(-270deg); }
+  .menu-options li:nth-child(7) { transform: rotate(315deg) translateY(-100px) rotate(-315deg); }
+  
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .modal-content {
+    background-color: var(--light-bg);
+    opacity: 90%;
+    margin: 20% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 5px;
+  }
+  
+  /* Tambahkan aturan CSS untuk dark mode */
+  body.dark .modal-content {
+    background-color: var(--dark-bg); /* Ganti warna background modal pada dark mode */
+    color: inherit; /* Ganti warna teks modal pada dark mode */
+  }
+  
+  body.dark .close {
+    color: inherit; /* Ganti warna ikon close pada dark mode */
+  }
+  .close {
+    color: inherit;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Modal Contact */
+  #contact-modal .social-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #contact-modal .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    color: inherit;
+    font-size: 24px;
+  }
+  
+  #contact-modal .social-icons a:hover {
+    color: var(--dark-text);
+  }
+  
+  /* Modal Feedback Form */
+  #home-modal #feedback-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Background Animation */
+  
+  .background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  .background-animation img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: backgroundAnimation 60s linear infinite;
+    opacity: 0;
+  }
+  
+  @keyframes backgroundAnimation {
+    0% {
+      opacity: 0;
+      transform: scale(1.2) translateY(-10%);
+    }
+    10% {
+      opacity: 1;
+      transform: scale(1) translateY(0%);
+    }
+    90% {
+      opacity: 1;
+      transform: scale(1) translateY(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.2) translateY(10%);
+    }
+  }
+  
+  /* Notification */
+  
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+  }
+  
+  .profile-picture {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    
+  }
+  
+  /* Style untuk lightbox dan modal */
+  #project-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+  }
+  
+  #project-modal.light .modal-content {
+    background-color: inherit;
+    color: inherit;
+  }
+  
+  #project-modal.dark .modal-content {
+    background-color: var(--dark-bg);
+    color: inherit;
+  }
+  
+  #project-modal.light .close {
+    color: #333;
+  }
+  
+  #project-modal.dark .close {
+    color: #ddd;
+  }
+  
+  /* Container untuk slides */
+  .image-slider {
+    position: relative;
+    max-width: 1000px; /* Maximum width */
+    margin: auto;
+    background-color: inherit;
+  }
+  
+  /* Mengatur gambar pada slider */
+  .image-slider .mySlides {
+    display: none; /* Hidden by default */
+    width: 100%; /* Responsive width */
+    height: auto; /* Adjust height */
+  }
+  
+  /* Caption text */
+  .image-slider .caption {
+    color: inherit;
+    font-size: 1px;
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+  }
+  
+  /* Navigasi slide sebelumnya dan berikutnya */
+  .image-slider .prev, .image-slider .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none; /* Disable text selection */
+  }
+  
+  .image-slider .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  .image-slider .prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* Hover effects for the buttons */
+  .image-slider .prev:hover, .image-slider .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Gambar yang aktif */
+  .image-slider .mySlides.active {
+    display: block;
+  }
+  
+  /* Style untuk gambar yang di klik/diperbesar */
+  .image-slider img.active {
+    cursor: pointer;
+    transition: transform 0.25s ease;
+  }
+  
+  .image-slider img.active:hover {
+    transform: scale(1.1); /* Zoom efek saat di-hover */
+  }
+  
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .lightbox-content {
+    max-width: 110%;
+    max-height: 110%;
+    margin: auto;
+    display: block;
+    overflow: auto;
+  }
+  
+  /* Modal Projects */
+  .project-description {
+    display: none;
+    overflow: auto;
+    transition: max-height 0.5s ease;
+  }
+  
+  .project-list {
+    position: relative;
+  }
+  
+  .description-btn {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px; /* Ukuran lingkaran */
+    height: 40px; /* Ukuran lingkaran */
+    line-height: 40px; /* Vertikal align icon */
+    text-align: center; /* Horisontal align icon */
+    background-color: var(--menu-hover-bg);
+    border: none;
+    color: var(--light-text);
+    padding: 0;
+    border-radius: 50%; /* Membuatnya berbentuk lingkaran */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .description-btn:hover {
+    background-color: var(--menu-hover-bg-darker);
+    transform: translateX(-50%) scale(1.1); /* Membuatnya lebih besar saat di-hover */
+  }
+  
+  .description-btn i {
+    pointer-events: none; /* Mencegah ikon menerima event klik */
+  }
+  
+  .project-list.active .project-description {
+    display: block;
+    max-height: 2000px; /* Set the max height */
+  }
+  
+  .project-list.active .description-btn {
+    transform: translateX(-50%) translateY(-90%);
+  }
+  
+  body.dark .description-btn {
+    background-color: var(--dark-bg);
+    color: inherit;
+  }
+  
+  body.dark .description-btn:hover {
+    background-color: var(--dark-bg);
+  }
+  @keyframes fallIn {
+    from {
+      transform: translateY(-50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .certificates-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .certificate-item {
+    margin: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .cert-image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .cert-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .cert-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: lightgrey;
+    opacity: 70%;
+    transform: translateY(100%);
+    transition: transform 0.5s ease;
+  }
+  
+  body.dark .cert-description {
+    background-color: var(--dark-bg);
+    opacity: 45%;
+  }
+  
+  .certificate-item.active .cert-description {
+    transform: translateY(0%);
+    animation: fallIn 0.5s ease forwards;
+  }
+  
+  .popup {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: inherit;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    opacity: 90%;
+  }
+  
+  .popup-content {
+    text-align: center;
+  }
+  
+  .close-popup {
+    display: inline-block;
+    position: relative;
+    padding: 8px 16px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    background-color: navy;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease; /* Animasi transisi untuk background color */
+  }
+  
+  .close-popup:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 200%; /* Lebar gradient dua kali lipat dari tombol */
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 80%); /* Gradient putih transparan */
+    transition: left 0.3s ease; /* Animasi untuk perubahan posisi gradient saat hover */
+    border-radius: 50%; /* Untuk membuat gradient berbentuk bulat */
+    z-index: -1; /* Mengatur z-index agar gradient berada di bawah tombol */
+  }
+  
+  .close-popup:hover:before {
+    left: -50%; /* Menggeser gradient ke kiri agar hanya setengah badan tombol yang bercahaya */
+  }
+  
+  .close-popup:hover {
+    background-color: darkgray; /* Warna akan berubah saat di-hover */
+    color: navy;
+  }
+  
+  body.dark .popup {
+    background-color: inherit;
+  }
+  
+  body.dark .close-popup{
+    background-color: navy;
+    color: var(--dark-text);
+  }
+  
+  body.dark .close-popup:hover {
+    background-color: inherit; /* Warna akan berubah saat di-hover */
+  }
+  
+  .disabled {
+    pointer-events: none; /* Mencegah elemen menerima event pointer */
+    opacity: 0.5; /* Opsional: Mengurangi opasitas untuk indikasi visual bahwa tombol nonaktif */
+  }
+  
+  /* Focus style for menu items and buttons */
+  .menu-options li:focus,
+  .theme-button:focus,
+  .close:focus,
+  .description-btn:focus,
+  .close-popup:focus {
+     outline: 2px solid white;
+  }
