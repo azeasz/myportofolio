@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlides(slideIndex);
   
     function showSlides(n) {
-      var slides = document.getElementsByClassName("mySlides");
+      var slides = document.getElementsByClassName("mySlides img");
       if (slides.length > 0) {
         if (n > slides.length) { slideIndex = 1; }
         if (n < 1) { slideIndex = slides.length; }
