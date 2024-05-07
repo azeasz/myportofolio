@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlides(slideIndex);
   
     function showSlides(n) {
-      var slides = document.getElementsByClassName("mySlides img");
+      var slides = document.getElementsByClassName("mySlides");
       if (slides.length > 0) {
         if (n > slides.length) { slideIndex = 1; }
         if (n < 1) { slideIndex = slides.length; }
@@ -221,10 +221,10 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   function moveSlide(n) {
-     const slides = document.querySelectorAll('.mySlides');
+     const slides = document.querySelectorAll('.mySlides img');
      const lightboxContent = document.querySelector('.lightbox-content');
-     let newIndex = Array.from(slides).findIndex(slide => slide.src === lightboxContent.src) + n;
-     newIndex = (newIndex + slides.length) % slides.length; // Wrap around
+     let currentIndex = Array.from(slides).findIndex(slide => slide.src === lightboxContent.src);
+     let newIndex = (currentIndex + n + slides.length) % slides.length; // Corrected wrap around logic
      openLightbox(slides[newIndex].src);
   };
       
@@ -261,4 +261,5 @@ document.addEventListener('DOMContentLoaded', function () {
   
   
   });
+  
   
