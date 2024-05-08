@@ -533,6 +533,28 @@ body.dark .close {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+/* For desktops and laptops */
+@media screen and (min-width: 1024px) {
+    .description-btn {
+        top: 15vh; 
+    }
+}
+
+/* For tablets and smaller laptops */
+@media screen and (max-width: 1023px) {
+    .description-btn {
+        top: 12vh; /* Adjust for medium-sized screens */
+    }
+}
+
+/* For phones */
+@media screen and (max-width: 767px) {
+    .description-btn {
+        top: 10vh; /* Adjust for smaller screens */
+    }
+}
+
+
 .description-btn:hover {
   background-color: var(--menu-hover-bg-darker);
   transform: translateX(-50%) scale(1.1); /* Membuatnya lebih besar saat di-hover */
