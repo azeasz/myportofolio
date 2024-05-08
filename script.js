@@ -221,7 +221,7 @@ window.addEventListener('keydown', function (event) {
 });
 
 function moveSlide(n) {
-   const slides = document.querySelectorAll('.mySlides');
+   const slides = document.querySelectorAll('.mySlides img');
    const lightboxContent = document.querySelector('#lightbox-modal .lightbox-content');
    let newIndex = Array.from(slides).findIndex(slide => slide.src === lightboxContent.src) + n;
    newIndex = (newIndex + slides.length) % slides.length; // Wrap around
