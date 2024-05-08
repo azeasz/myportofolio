@@ -215,17 +215,11 @@ document.addEventListener('keydown', function (event) {
     
 window.addEventListener('keydown', function (event) {
    if (event.key === 'ArrowLeft') {
-      moveSlide(-1);
+      plusSlides(-1);
    } else if (event.key === 'ArrowRight') {
-      moveSlide(1);
+      plusSlides(1);
    }
 });
-
-function moveSlide(n) {
-   document.querySelectorAll('.mySlides img');
-   document.querySelector('#lightbox-modal .lightbox-content').src = src;
-   openLightbox(this.href);
-};
     
 // Animasi mengetik
   const textElement = document.getElementById('typing');
