@@ -536,14 +536,14 @@ body.dark .close {
 /* For desktops and laptops */
 @media screen and (min-width: 1024px) {
     .description-btn {
-        top: 30vh; 
+        top: 230px; 
     }
 }
 
 /* For tablets and smaller laptops */
 @media screen and (max-width: 1023px) {
     .description-btn {
-        top: 26vh; /* Adjust for medium-sized screens */
+        top: 130px; /* Adjust for medium-sized screens */
     }
 }
 
