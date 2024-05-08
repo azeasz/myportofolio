@@ -208,6 +208,7 @@ document.addEventListener('keydown', function (event) {
       modals.forEach(modal => {
          modal.style.display = 'none';
          menuButton.classList.remove('rotate');
+        document.getElementById('lightbox-modal').style.display = 'none';
       });
    }
 });
