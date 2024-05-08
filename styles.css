@@ -382,7 +382,7 @@ body.dark .close {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden; /* Enable scroll if needed */
+  overflow: auto; /* Enable scroll if needed */
 }
 
 #project-modal.light .modal-content {
@@ -507,7 +507,7 @@ body.dark .close {
 /* Modal Projects */
 .project-description {
   display: none;
-  overflow: hidden;
+  overflow: auto;
   transition: max-height 0.5s ease;
 }
 
